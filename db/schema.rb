@@ -15,8 +15,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_152307) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.integer "authorId"
-    t.integer "postId"
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,8 +25,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_152307) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "authorId"
-    t.integer "postId"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "author_id", null: false
@@ -36,11 +32,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_152307) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "authorId"
     t.string "title"
     t.string "text"
-    t.integer "commentsCounter"
-    t.integer "likesCounter"
+    t.integer "comments_counter"
+    t.integer "likes_counter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "author_id", null: false
@@ -51,7 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_152307) do
     t.string "name"
     t.string "photo"
     t.string "bio"
-    t.integer "postsCounter"
+    t.integer "posts_counter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
