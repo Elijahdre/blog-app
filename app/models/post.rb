@@ -3,6 +3,11 @@ class Post < ApplicationRecord
   has_many :likes, foreign_key: 'post_id'
   has_many :comments, foreign_key: 'post_id'
 
+  # Post Model Validations
+  validates :title, presence: true, allow_blank: false, length: { maximum: 250 }
+  validates :comments_counter, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :likes_counter, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
   # A method that updates the posts counter for a user.
   after_save :updates_post_counter_user
 
