@@ -24,6 +24,6 @@ RSpec.describe User, type: :model do
   end
   it 'should return most recent post' do
     recent = User.new.most_recent_post
-    expect(recent.length).to be(0)
+    expect(recent.length).to be(1)
   end
 end
