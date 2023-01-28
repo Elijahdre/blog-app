@@ -14,6 +14,7 @@ RSpec.describe 'Users', type: :request do
       get '/users/:id'
       expect(response).to have_http_status(:ok)
       expect(response.body).to include('Here is a specific user')
+      expect(response).to render_template(:show)
     end
   end
 end
