@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
-  user = User.create(name: 'John', posts_counter: 30, photo: 'https://randomuser.me/api/portraits/men/70.jpg',
+  user = User.create(name: 'John', post_counter: 30, photo: 'https://randomuser.me/api/portraits/men/70.jpg',
                      bio: 'Teacher from Nigeria.')
 
   subject do
