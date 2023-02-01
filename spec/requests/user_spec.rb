@@ -11,7 +11,6 @@ RSpec.describe 'Users', type: :request do
       get '/'
       expect(response).to have_http_status(:ok)
       expect(response.body).to include('Users')
-
     end
   end
 
