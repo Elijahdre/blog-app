@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'UserShows', type: :system do
-  subject { User.new(name: 'John', posts_counter: 30, photo: 'https://randomuser.me/api/portraits/men/70.jpg', bio: 'Teacher from Poland.') }
+  subject { User.new(name: 'John', post_counter: 30, photo: 'https://randomuser.me/api/portraits/men/70.jpg', bio: 'Teacher from Poland.') }
 
   before { subject.save }
 
@@ -18,12 +18,12 @@ RSpec.describe 'UserShows', type: :system do
 
     it 'I can see the number of posts each user has written.' do
       visit root_path(subject)
-      page.has_content?(subject.posts_counter)
+      page.has_content?(subject.post_counter)
     end
 
     it "When I click on a user, I am redirected to that user's show page." do
       User.delete_all
-      user = User.create(name: 'John', posts_counter: 30, photo: 'https://randomuser.me/api/portraits/men/70.jpg',
+      user = User.create(name: 'John', post_counter: 30, photo: 'https://randomuser.me/api/portraits/men/70.jpg',
                          bio: 'Teacher from Poland.')
       visit root_path(user)
       click_on 'John'
@@ -43,7 +43,7 @@ RSpec.describe 'UserShows', type: :system do
     end
     it 'I can see the number of posts the user has written.' do
       visit user_path(subject.id)
-      page.has_content?(subject.posts_counter)
+      page.has_content?(subject.post_counter)
     end
     it "I can see the user's bio." do
       visit user_path(subject.id)

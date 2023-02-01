@@ -22,7 +22,7 @@ RSpec.describe Post, type: :system do
 
     it 'I can see the number of posts the user has written.' do
       visit user_posts_path(user.id)
-      page.has_content?(user.posts_counter)
+      page.has_content?(user.post_counter)
     end
 
     it "I can see a post's title." do
