@@ -41,11 +41,9 @@
           <small class="text-muted">Likes: <%= post.likes_counter %></small>
         </p>
       </div>
-      <% end %>
+      <% end %>  <%= link_to "See All Posts ", user_posts_path(@user) , class:
+      "btn btn-secondary" %>
 
-      <button class="btn mb-5">
-        <%= link_to "See All Posts", user_posts_path(@user) %>
-      </button>
     </div>
   </div>
 </div>
