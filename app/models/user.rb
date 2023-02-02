@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   # Validations for the user model
   validates :name, presence: true, allow_blank: false
+  validates :email, presence: true
   validates :post_counter, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   # A method that returns the 3 most recent posts for a given user.
