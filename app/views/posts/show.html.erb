@@ -3,18 +3,37 @@
   <div class="card mb-3 border-success" style="width: 670px;">
     <div class="card-header bg-success text-white">
       <div class='row'>
-        <div class='col-md-8'><%= @post.title %> by <%= @user.name %></div>
-        <div class='col-md-4 d-flex gap-2'>
-          <p class="card-text"><small class="text-white">Comments: <%= @post.comments_counter %></small></p>
-          | 
-          <p class="card-text"><small class="text-white">Likes: <%= @post.likes_counter %></small></p>
+        <div class='col-md-7 my-2'><%= @post.title %> by <%= @user.name %></div>
+        <div class='col-md-5 d-flex gap-4 my-2'>
+          <h4>
+            <span class="badge bg-primary position-relative shadow">
+              Comments
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <%= @post.comments_counter %>
+              </span>
+            </span>
+          </h4>
+          <h4>
+            <span class="badge bg-primary position-relative shadow">
+              Likes
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <%= @post.likes_counter %>
+              </span>
+            </span>
+          </h4>
         </div>
       </div>
     </div>
     <div class="card-body">
       <p class="card-text"><%= @post.text%></p>
     </div>
+    <div class="card-footer">
+      <%= form_with model: @like, url: user_post_likes_path(post_id: @post.id) do |f| %>
+        <%= f.submit "Like", class:"btn btn-outline-primary", data:{turbo:false} %>
+      <% end %>
+    </div>
   </div>
+  <%= link_to "Add New Comment", new_user_post_comment_path(user_id: @user.id, post_id: @post.id), class:"btn btn-primary mb-3" %>
   <h3>Comments</h3>
   <% if @comments.empty? %>
     <div class="card mb-3 border-danger" style="width: 670px;">
@@ -23,12 +42,10 @@
       </div>
     </div>
   <% else %>
-    <div class="card mb-3 border-secondary" style="width: 670px;">
-      <div class="card-body">
-        <% @comments.each do |comment| %>
-          <p class="card-text"><%= comment.author.name %>: <%= comment.text %></p>
-        <% end %>
-      </div>
-    </div>
+    <ul class="list-group mb-3" style="width: 540px;">
+      <% @comments.each do |comment| %>
+        <li class="list-group-item"><%= comment.author.name %>: <%= comment.text%></li>
+      <% end %>
+    </ul>
   <% end %>
 </div>
