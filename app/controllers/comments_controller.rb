@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
       redirect_to user_posts_path(@current_post.author_id, @current_post.id),
                   notice: 'New comment saved successfully'
 
-
     else
       render :new, status: :unprocessable_entity, alert: 'Something went wrong'
     end
