@@ -10,8 +10,7 @@ class CommentsController < ApplicationController
     @comments.author_id = current_user.id
     if @comments.save
       redirect_to user_posts_path(@current_post.author_id, @current_post.id),
-                  notice: 'New comment saved successfully'
-
+                  notice: 'New comment saved successfully dev
 
     else
       render :new, status: :unprocessable_entity, alert: 'Something went wrong'
@@ -29,7 +28,7 @@ class CommentsController < ApplicationController
       render :new, status: :unprocessable_entity, alert: 'Something went wrong'
     end
   end
-
+  
   private
 
   def comment_params
