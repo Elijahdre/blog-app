@@ -5,6 +5,10 @@ class Comment < ApplicationRecord
   # A method that updates the comments counter for a post.
   after_save :updates_comments_counter_post
 
+  def update_comment_counter_when_destroy
+    post.decrement!(:comments_counter)
+  end
+
   private
 
   def updates_comments_counter_post
