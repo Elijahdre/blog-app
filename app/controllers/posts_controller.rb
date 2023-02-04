@@ -45,9 +45,9 @@ class PostsController < ApplicationController
     @post.destroy
     if @post.destroy
       @post.update_posts_count_when_destroy
-      redirect_to user_posts_path(current_user.id), notice: "Post deleted successfully"
+      redirect_to user_posts_path(current_user.id), notice: 'Post deleted successfully'
     else
-      render :new, status: :unprocessable_entity, alert: "Something"
+      render :new, status: :unprocessable_entity, alert: 'Something'
     end
   end
 
